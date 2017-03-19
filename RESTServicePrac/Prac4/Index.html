@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>NBA League</title>
+    <script src="Scripts/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript">
+        var uri = 'api/Player';
+        $(document).ready(function () {
+            $.ajax({
+                type: 'GET',
+                url: uri + '/GetAllPlayers',
+                success: function(data){
+                    showPlayers(data, "ul#displayAll");
+                }
+            });
+
+            $("button#src").click(function () {
+                var attr = $('select#attr').val();
+                var value = $('input#searchStr').val();
+                if (value.length == 0) alert("Please Enter Value For Search");
+                else Search(attr, value);
+            });
+
+            $("button#del").click(function () {
+                var attr = $('select#attr').val();
+                var value = $('input#searchStr').val();
+                if (value.length == 0) alert("Please Enter Value For Delete");
+                else Delete(attr, value);
+            });
+
+            $('form#registration input[type=submit]').click(function (event) {
+                event.preventDefault();
+                var re = /(19|20)\d\d[-/.](0[1-9]|1[012])[-/.](0[1-9]|[12][0-9]|3[01])/;
+                if (re.exec($('#dob').val())){
+                    $.ajax({
+                        url: uri + '/PostPlayer',
+                        type: 'POST',
+                        data: $('form#registration').serialize(),
+                        success: function (data) {
+                            if (data == "WD")
+                            {
+                                alert("wrong date");
+                            }
+                            else {
+                                if (data == "WI") {
+                                    alert("Wrong Input");
+                                }
+                                else {
+                                    $('#displayAll').html('');
+                                    showPlayers(data, '#displayAll');
+                                }
+                            } 
+                      
+                        }
+                    })
+                }
+                else{
+                    alert('Wrong Date Format');
+                }
+            });
+        })
+
+        function showPlayers(data, selector) {
+            for (var i = 0; i < data.length; i++) {
+                var showString = data[i].RegistrationID + "," + data[i].FirstName + "," + data[i].LastName + "," + data[i].TeamName + "," + data[i].DateOfBirth.substr(0,10);
+                $(selector).append("<li>" + showString + "</li>");
+            }
+        }
+
+        function showSinglePlayer(data, selector) {
+            var showString = data.RegistrationID + "," + data.FirstName + "," + data.LastName + "," + data.TeamName + "," + data.DateOfBirth.substr(0, 10);
+            $(selector).append("<li>" + showString + "</li>"); 
+        }
+
+        function Search(attr, value) {
+            var uri_suffix = attr == 'id' ? '/GetPlayer/' + value : '/GetPlayerByName/' + value;
+            $.ajax({
+                type: 'GET',
+                url: uri + uri_suffix,
+                success: function (data) {
+                    $('#searchResult').html('');
+                    if (uri_suffix.indexOf('ByName') == 10) {
+                        showPlayers(data, '#searchResult');
+                    }
+                    else {
+                        showSinglePlayer(data, '#searchResult');
+                    }
+                },
+                error: function (jqXHR, textStatus, err) {
+                    $('#searchResult').html('');
+                    $('#searchResult').html("Error: " + err);
+                }
+            });
+        }
+
+        function Delete(attr, value) {
+            var uri_suffix = attr == 'id' ? '/DeletePlayer/' + value : '/DeletePlayerByName/' + value;
+            $.ajax({
+                type: 'DELETE',
+                url: uri + uri_suffix,
+                success: function (data) {
+                    $('#displayAll').html('');
+                    $('#searchResult').html('');
+                    showPlayers(data, '#displayAll');
+                    
+                },
+                error: function (jqXHR, textStatus, err) {
+                    $('#searchResult').html('');
+                    $('#searchResult').html("Error: " + err);
+                }
+            });
+        }
+
+    </script>
+</head>
+<body>
+    <div>
+        <h3>All Players</h3>
+        <ul id="displayAll">      
+        </ul>
+    </div>
+    <div>
+        <h3>Search or Delete</h3>
+        <select id="attr">
+            <option selected="selected" value="id">ID</option>
+            <option value="name">Name</option>
+        </select>
+        <input type="text" id="searchStr" />
+        <button id="src">Search</button>
+        <button id="del">Delete</button>
+        <ul id="searchResult">
+
+        </ul>
+        <p id="err"></p>
+    </div>
+    <div>
+        <h3>Player Registration</h3>
+        <form id="registration">
+            <!--<label for="regisID">regisID</label><br />
+            <input id="rid" type="text" name="regisID" /><br />
+            <label for="Name">Name</label><br />
+            <input id="rd" type="text" name="Name" /><br />-->
+            <label for="RegistrationID">RegistrationID</label><br />
+            <input id="rid" type="text" name="RegistrationID" /> <br />
+            <label for="FirstName">FirstName</label><br />
+            <input id="fn" type="text" name="FirstName" /><br />
+            <label for="LastName">LastName</label><br />
+            <input id="ln" type="text" name="LastName" /><br />
+            <label for="TeamName">TeamName</label><br />
+            <input id="tn" type="text" name="TeamName" /><br />
+            <label for="DateOfBirth">DateOfBirth</label><br />
+            <input id="dob" type="text" name="DateOfBirth" /><span>(Excepted Format: yyyy/MM/dd, yyyy-MM-dd, yyyy.MM.dd)</span><br />
+            <input type="submit" value="Player Registration" />
+        </form>
+    </div>
+</body>
+</html>

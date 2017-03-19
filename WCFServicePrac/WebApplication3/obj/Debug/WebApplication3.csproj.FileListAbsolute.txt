@@ -1,0 +1,6 @@
+C:\Users\yiwen\Documents\Visual Studio 2013\Projects\WebApplication3\WebApplication3\bin\WebApplication3.dll.config
+C:\Users\yiwen\Documents\Visual Studio 2013\Projects\WebApplication3\WebApplication3\bin\WebApplication3.dll
+C:\Users\yiwen\Documents\Visual Studio 2013\Projects\WebApplication3\WebApplication3\bin\WebApplication3.pdb
+C:\Users\yiwen\Documents\Visual Studio 2013\Projects\WebApplication3\WebApplication3\obj\Debug\WebApplication3.csprojResolveAssemblyReference.cache
+C:\Users\yiwen\Documents\Visual Studio 2013\Projects\WebApplication3\WebApplication3\obj\Debug\WebApplication3.dll
+C:\Users\yiwen\Documents\Visual Studio 2013\Projects\WebApplication3\WebApplication3\obj\Debug\WebApplication3.pdb

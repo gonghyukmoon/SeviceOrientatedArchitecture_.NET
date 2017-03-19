@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a4e194a8-7af3-4691-806f-71725c0b7006" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:51361/BookPurchaseWebService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BookPurchaseWebService.xsd" MetadataType="Schema" ID="9a54ab03-86b6-4350-84e9-38a509083482" SourceId="1" SourceUrl="http://localhost:51361/BookPurchaseWebService.svc?xsd=xsd2" />
+    <MetadataFile FileName="BookPurchaseWebService1.xsd" MetadataType="Schema" ID="b7f6bb6c-8d74-469e-b40a-effc5f8481b4" SourceId="1" SourceUrl="http://localhost:51361/BookPurchaseWebService.svc?xsd=xsd1" />
+    <MetadataFile FileName="BookPurchaseWebService.wsdl" MetadataType="Wsdl" ID="830800a8-952d-46e8-8183-73c7075e20d8" SourceId="1" SourceUrl="http://localhost:51361/BookPurchaseWebService.svc?wsdl" />
+    <MetadataFile FileName="BookPurchaseWebService.disco" MetadataType="Disco" ID="7a422107-3c85-4bc0-86cc-f96417fa386e" SourceId="1" SourceUrl="http://localhost:51361/BookPurchaseWebService.svc?disco" />
+    <MetadataFile FileName="BookPurchaseWebService2.xsd" MetadataType="Schema" ID="19be4c93-2002-4ab9-9280-f41fc8dc6a87" SourceId="1" SourceUrl="http://localhost:51361/BookPurchaseWebService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

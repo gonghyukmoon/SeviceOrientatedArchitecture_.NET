@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="FindPostcode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="suburb" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindPostcodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindPostcodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="FindPostcodeSoapIn">
+    <wsdl:part name="parameters" element="tns:FindPostcode" />
+  </wsdl:message>
+  <wsdl:message name="FindPostcodeSoapOut">
+    <wsdl:part name="parameters" element="tns:FindPostcodeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PostcodeFinderServiceSoap">
+    <wsdl:operation name="FindPostcode">
+      <wsdl:input message="tns:FindPostcodeSoapIn" />
+      <wsdl:output message="tns:FindPostcodeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PostcodeFinderServiceSoap" type="tns:PostcodeFinderServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="FindPostcode">
+      <soap:operation soapAction="http://tempuri.org/FindPostcode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PostcodeFinderServiceSoap12" type="tns:PostcodeFinderServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="FindPostcode">
+      <soap12:operation soapAction="http://tempuri.org/FindPostcode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PostcodeFinderService">
+    <wsdl:port name="PostcodeFinderServiceSoap" binding="tns:PostcodeFinderServiceSoap">
+      <soap:address location="http://localhost:55031/PostcodeFinderService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PostcodeFinderServiceSoap12" binding="tns:PostcodeFinderServiceSoap12">
+      <soap12:address location="http://localhost:55031/PostcodeFinderService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

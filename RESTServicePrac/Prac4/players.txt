@@ -1,0 +1,6 @@
+p1111,Kobe,Bryant,Los Angeles Lakers,1978-08-23
+p2222,Tim,Duncan,San Antonio Spurs,1976-04-25
+p3333,LeBron,James,Cleveland Cavaliers,1984-12-30
+p4444,Darren,Z,Los Angeles Lakers,1990-03-08
+p5555,4'4,df'z,e,1990-08-03
+p6666,difan,zhongZ,zzzzz,1990-03-08
