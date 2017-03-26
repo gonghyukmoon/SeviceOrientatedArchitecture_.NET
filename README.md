@@ -86,6 +86,3 @@ DELETE api/Player/DeletePlayerByName/< name >
 This operation receives the information of a player and creates an instance of class Player, then add this player into existing player list and save into file players.txt. If the ID of the player you want to register already exists, then you need to update the information of this player. This operation returns the new player list.
 Endpoints:
 POST api/Player/PostPlayer
-
-
-# LINQ Prac
